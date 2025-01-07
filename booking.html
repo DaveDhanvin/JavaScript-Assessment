@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Restaurant Booking Form</title>
+  <style>
+   
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('https://via.placeholder.com/1920x1080?text=Luxury+Hotel+Ambiance');
+      background-size: cover;
+      background-position: center;
+      color: #333;
+    }
+
+  
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #b88a00;
+      font-size: 2.2rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #b88a00;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    input, select {
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    input:focus, select:focus {
+      border-color: #b88a00;
+      outline: none;
+      box-shadow: 0 0 5px rgba(184, 138, 0, 0.5);
+    }
+
+    
+    button {
+      background-color: #b88a00;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      border: none;
+      text-transform: uppercase;
+    }
+
+    button:hover {
+      background-color: #9b6e00;
+      box-shadow: 0 5px 15px rgba(184, 138, 0, 0.3);
+    }
+ */
+    #slot-group, #time-group {
+      display: none;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Restaurant Booking Form</h1>
+    <form id="bookingForm">
+      <div class="form-group">
+        <label for="choice">Choice of Booking:</label>
+        <select id="choice">
+          <option value="">-- Select Booking Type --</option>
+          <option value="full">Full Day Booking</option>
+          <option value="half">Half Day Booking</option>
+          <option value="hourly">Hourly Booking</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="username">User Name:</label>
+        <input type="text" id="username" placeholder="Enter your name">
+      </div>
+
+      <div class="form-group">
+        <label for="mobile">Mobile Number:</label>
+        <input type="text" id="mobile" placeholder="Enter your mobile number">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+      </div>
+
+      <div class="form-group">
+        <label for="noOfPersons">No. of Persons:</label>
+        <input type="number" id="noOfPersons" placeholder="Enter the number of persons">
+      </div>
+
+      <div class="form-group" id="date-group">
+        <label for="date">Date:</label>
+        <input type="date" id="date">
+      </div>
+
+      <div class="form-group" id="time-group">
+        <label for="time">Time:</label>
+        <input type="time" id="time">
+      </div>
+
+      <div class="form-group" id="slot-group">
+        <label for="slot">Slot:</label>
+        <select id="slot">
+          <option value="">-- Select Slot --</option>
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+    <div class="footer">
+      <p>&copy;</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const choiceSelect = document.getElementById('choice');
+      const dateGroup = document.getElementById('date-group');
+      const timeGroup = document.getElementById('time-group');
+      const slotGroup = document.getElementById('slot-group');
+
+      choiceSelect.addEventListener('change', function () {
+        const choice = choiceSelect.value;
+
+        // Reset visibility
+        dateGroup.style.display = 'none';
+        timeGroup.style.display = 'none';
+        slotGroup.style.display = 'none';
+
+        if (choice === 'full') {
+          dateGroup.style.display = 'block';
+        } else if (choice === 'half') {
+          dateGroup.style.display = 'block';
+          slotGroup.style.display = 'block';
+        } else if (choice === 'hourly') {
+          dateGroup.style.display = 'block';
+          timeGroup.style.display = 'block';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
